@@ -31,7 +31,6 @@ function OldHiresCard() {
         </div>
 
         <div style={{
-          backgroundColor: 'rgb(141, 87, 177);',
           background: 'linear-gradient(90deg, rgba(141, 87, 177, 1) 0%, rgba(176, 182, 186, 1) 20%, rgba(102, 203, 202, 1) 40%, rgba(136, 206, 79, 1) 60%, rgba(227, 194, 50, 1) 80%, rgba(222, 130, 0, 1) 100%)'
 
         }} className='flex justify-between items-end gap-2 px-6 py-3'>
