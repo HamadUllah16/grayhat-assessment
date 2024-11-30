@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import { DialogClose } from '@radix-ui/react-dialog'
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import React from 'react'
 
 interface jobPost {
@@ -36,10 +35,15 @@ function ViewJobDetails({ job }: { job: jobPost }) {
                             job.appliedCandidates.map((worker) => {
                                 return (
                                     <div key={worker.email} className='flex flex-col gap-1 bg-white rounded-lg p-2'>
-                                        <p className='text-black'>
-                                            {worker.name}
-                                        </p>
-                                        <p className='text-black'>
+                                        <div className='flex gap-1 items-center'>
+                                            <div className='flex items-center justify-center w-6 h-6 rounded-full bg-red-400'>
+                                                {worker.name.charAt(0)}
+                                            </div>
+                                            <p className='text-black text-sm'>
+                                                {worker.name}
+                                            </p>
+                                        </div>
+                                        <p className='text-black text-xs'>
                                             {worker.email}
                                         </p>
 

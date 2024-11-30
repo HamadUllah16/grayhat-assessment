@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./redux/store";
-import LoginForm from "./components/LoginForm";
+import LoginModal from "./components/LoginModal";
 import { useEffect } from "react";
 import { setUser } from "./redux/features/userSlice";
 
@@ -35,7 +35,7 @@ export default function Home() {
             </Link>
           </>
           :
-          <LoginForm />
+          <LoginModal />
         }
 
       </div>

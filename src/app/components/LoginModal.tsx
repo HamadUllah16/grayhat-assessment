@@ -3,13 +3,10 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { usePathname } from 'next/navigation'
 import React, { useState } from 'react'
 
-function LoginForm() {
+function LoginModal() {
     const [profile, setProfile] = useState({ name: '', email: '', role: '' })
-    const path = usePathname();
-
     function handleSubmit() {
         localStorage.setItem('name', profile.name);
         localStorage.setItem('email', profile.email);
@@ -61,4 +58,4 @@ function LoginForm() {
     )
 }
 
-export default LoginForm
+export default LoginModal

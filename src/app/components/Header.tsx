@@ -1,16 +1,17 @@
 'use client'
-import Image from 'next/image';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../redux/store';
 import { clearUser, setUser } from '../redux/features/userSlice';
-import LoginForm from './LoginForm';
+import LoginModal from './LoginModal';
 import { Button } from '@/components/ui/button';
+import { Home } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
-const defaultPfp = '/default.jpg';
 function Header() {
     const { name, email } = useSelector((state: RootState) => state.user)
     const dispatch = useDispatch<AppDispatch>();
+    const router = useRouter();
 
     function logoutHandler() {
         localStorage.removeItem('email');
@@ -45,13 +46,18 @@ function Header() {
                         </div>
                     </div>
 
-                    <Button onClick={logoutHandler}>
-                        Logout
-                    </Button>
+                    <div className='flex gap-2'>
+                        <Button size={'icon'} onClick={() => router.push('/')}>
+                            <Home />
+                        </Button>
+                        <Button onClick={logoutHandler}>
+                            Logout
+                        </Button>
+                    </div>
 
                 </div>
                 :
-                <LoginForm />
+                <LoginModal />
             }
         </div>
     )

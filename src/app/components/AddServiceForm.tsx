@@ -3,10 +3,11 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { FormikValues } from 'formik'
 import { Plus } from 'lucide-react'
 import React from 'react'
 
-function AddServiceForm({ formik }: { formik: any }) {
+function AddServiceForm({ formik }: { formik: FormikValues }) {
     return (
         <Dialog>
             <DialogTrigger asChild>

@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../redux/store'
@@ -38,7 +37,7 @@ function ApplyForm({ job }: { job: jobType }) {
     const dispatch = useDispatch<AppDispatch>();
 
 
-    function handleApply(e: any) {
+    function handleApply(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         toast.promise(
             dispatch(applyToJob({ name, email, jobId: job._id }))

@@ -1,17 +1,18 @@
 import React from 'react'
 import ScreenWrapper from './ScreenWrapper'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
+
 
 function Home() {
-    const navigate = useNavigate();
+    const router = useRouter();
     return (
         <ScreenWrapper>
             <div className='flex flex-grow items-center justify-center gap-3'
             >
-                <button onClick={() => navigate('/view-services')}>
+                <button onClick={() => router.push('/view-services')}>
                     View Services
                 </button>
-                <button onClick={() => navigate('/add-service')}>
+                <button onClick={() => router.push('/add-service')}>
                     Add Services
                 </button>
             </div>

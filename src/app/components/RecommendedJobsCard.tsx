@@ -1,16 +1,41 @@
 import { CarouselItem } from '@/components/ui/carousel'
-import { Building2, MapPin, Phone } from 'lucide-react'
-import React from 'react'
+import { Building2, MapPin } from 'lucide-react'
+import React, { useState } from 'react'
+
+interface jobPost {
+    _id: string,
+    title: string,
+    company: string,
+    jobType: string,
+    salaryRange: string,
+    createdAt: string,
+    appliedCandidates: { email: string, name: string }[]
+}
 
 
-function RecommendedJobsCard({ job }: { job: { _id: string, title: string, company: string, salaryRange: string, jobType: string, createdAt: string, appliedCandidates: { email: string, name: string }[] } }) {
+function RecommendedJobsCard({ job, children }: { job: jobPost, children: React.ReactNode }) {
+    const [toggle, setToggle] = useState(false);
     const bgcolors = ['bg-red-400', 'bg-blue-200', 'bg-purple-600']
     return (
-        <CarouselItem className='min-w-72 max-w-80 '>
+        <CarouselItem className='min-w-72 max-w-80'>
 
-            <div className='flex flex-col rounded-2xl overflow-hidden'>
+            <div
+                className='flex flex-col rounded-2xl overflow-hidden relative'
+                onMouseEnter={() => setToggle(true)}
+                onMouseLeave={() => setToggle(false)}
+            >
+
+                <div
+                    className={`${toggle ? 'z-50 opacity-100' : 'z-0 opacity-0'}
+                                            flex w-full h-full transition-all duration-300 ease-in-out
+                                                absolute items-center justify-center top-0 left-0 bg-slate-600
+                                                bg-opacity-60`}
+                >
+                    {children}
+                </div>
 
                 <div className='flex flex-col p-6 gap-4 bg-white'>
+
                     <div className='flex flex-col gap-1'>
 
                         <h5 className='text-black font-bold text-xl max-w-52 capitalize'>

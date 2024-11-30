@@ -1,13 +1,18 @@
-import { Card, CardContent } from '@/components/ui/card'
 import { CarouselItem } from '@/components/ui/carousel'
-import React, { SetStateAction, useState } from 'react'
+import React, { useState } from 'react'
 import { formatCreatedAt } from '../util/formatDateTime'
 import { Building2 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import ApplyForm from './ApplyForm'
 
-function JobCard({ job, children }
-    : { job: { _id: string, title: string, company: string, salaryRange: string, createdAt: string }, children: React.ReactNode | null }) {
+interface jobType {
+    _id: string,
+    title: string,
+    company: string,
+    salaryRange: string,
+    createdAt: string
+}
+
+
+function JobCard({ job, children }: { job: jobType, children: React.ReactNode | null }) {
 
     const [toggle, setToggle] = useState(false);
     return (

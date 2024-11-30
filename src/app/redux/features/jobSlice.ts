@@ -27,7 +27,7 @@ const initialState = {
 
 export const createJobPost = createAsyncThunk<any, any, { rejectValue: { message: string } }>(
     'job/createJobPost',
-    async (data: any, { rejectWithValue, dispatch }) => {
+    async (data: any, { rejectWithValue }) => {
         try {
             const response = await axiosInstance.post('/job/create-job-post', data.values);
             data.formikHelpers.resetForm(); //resetting form if success
@@ -83,7 +83,7 @@ const jobSlice = createSlice({
         })
         builder.addCase(createJobPost.rejected, (state, action) => {
             state.loading = false;
-            state.error = action.payload?.message!;
+            state.error = action.payload?.message || "Error creating a job post.";
         })
 
         // get all job posts builder
@@ -97,7 +97,7 @@ const jobSlice = createSlice({
         })
         builder.addCase(getAllJobs.rejected, (state, action) => {
             state.loading = false;
-            state.error = action.payload?.message!
+            state.error = action.payload?.message || 'Error fetching the job posts.'
         })
 
         // apply to job builder
@@ -112,11 +112,11 @@ const jobSlice = createSlice({
             const job = state.allJobPosts.find((job) => job._id === jobId) //finding the relevant job
             job?.appliedCandidates.push({ email, name }) //pushing the worker to applied list
 
-            state.message = action.payload?.message!;
+            state.message = action.payload?.message;
         })
         builder.addCase(applyToJob.rejected, (state, action) => {
             state.loading = false;
-            state.error = action.payload?.message!
+            state.error = action.payload?.message || 'Error applying to job post.'
         })
     },
 })

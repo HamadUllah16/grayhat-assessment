@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import ScreenWrapper from '../components/ScreenWrapper'
 import Header from '../components/Header'
 import JobCard from '../components/JobCard'
@@ -12,7 +12,6 @@ import ApplyForm from '../components/ApplyForm'
 
 function ViewServicesPage() {
     const { email } = useSelector((state: RootState) => state.user);
-    const [showApply, setShowApply] = useState(false);
     const dispatch = useDispatch<AppDispatch>();
     const { allJobPosts } = useSelector((state: RootState) => state.job)
     const excludeMyJobs = allJobPosts.filter((job) => job.poster !== email)
@@ -34,7 +33,7 @@ function ViewServicesPage() {
                 <Carousel className='w-full overflow-hidden pl-6'>
                     <CarouselContent className='w-full -ml-3'>
                         {excludeMyJobs.length > 0 ?
-                            excludeMyJobs.map((job, index) => {
+                            excludeMyJobs.map((job) => {
                                 return (
                                     <JobCard
                                         key={job._id}
@@ -63,14 +62,16 @@ function ViewServicesPage() {
 
                 <Carousel className='w-full overflow-hidden pl-6'>
                     <CarouselContent className='w-full -ml-3'>
-                        {allJobPosts.length > 0 ?
-                            allJobPosts.map((job, index) => {
+                        {excludeMyJobs.length > 0 ?
+                            excludeMyJobs.map((job) => {
                                 if (job.appliedCandidates.length > 3) {
                                     return (
                                         <RecommendedJobsCard
                                             key={job._id}
                                             job={job}
-                                        />
+                                        >
+                                            <ApplyForm job={job} />
+                                        </RecommendedJobsCard>
                                     )
                                 }
                             }

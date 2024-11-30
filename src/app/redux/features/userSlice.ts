@@ -15,8 +15,8 @@ const userSlice = createSlice({
             state.name = action.payload.name
         },
         clearUser: (state) => {
-            state.email = '',
-                state.name = ''
+            state.email = '';
+            state.name = '';
         }
 
     },

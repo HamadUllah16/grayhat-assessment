@@ -1,11 +1,10 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../redux/store'
 import { getAllJobs } from '../redux/features/jobSlice';
 import { Carousel, CarouselContent } from '@/components/ui/carousel';
 import JobCard from './JobCard';
-import ApplyForm from './ApplyForm';
 import ViewJobDetails from './ViewJobDetails';
 
 function AllJobPosts() {

@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <ReduxProvider>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased dark pb-5`}
         >
           <Toaster position="top-center" toastOptions={{ className: 'dark' }} />
           {children}

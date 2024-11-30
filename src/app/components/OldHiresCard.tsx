@@ -1,6 +1,4 @@
-import { Card, CardHeader, CardTitle } from '@/components/ui/card'
-import { LocateIcon, MapPin } from 'lucide-react'
-import Image from 'next/image'
+import { MapPin } from 'lucide-react'
 import React from 'react'
 
 function OldHiresCard() {
