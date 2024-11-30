@@ -20,12 +20,7 @@ function AddService() {
         },
         enableReinitialize: true,
         validate(values) {
-            const errors = {
-                title: '',
-                company: '',
-                jobType: '',
-                salaryRange: ''
-            }
+            const errors: { [key: string]: string } = {};
 
             if (values.title.length < 10) {
                 errors.title = 'Title cannot be less than 10 characters.'
@@ -66,6 +61,7 @@ function AddService() {
 
                     <AddServiceForm
                         formik={formik}
+
                     />
 
                 </div>

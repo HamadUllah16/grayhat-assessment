@@ -81,7 +81,11 @@ function AddServiceForm({ formik }: { formik: FormikValues }) {
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button type="submit" disabled={!(formik.dirty && formik.isValid)}>Create</Button>
+                        <Button
+                            type="submit"
+                            disabled={!(formik.dirty && formik.isValid)}
+                            title={!formik.dirty ? "Make changes to enable" : "Fix validation errors"}
+                        >Create</Button>
                     </DialogFooter>
                 </form>
             </DialogContent>
