@@ -32,8 +32,9 @@ function ApplyForm({ job }: { job: jobType }) {
 
     function handleApply(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        const values = { ...profile, jobId: job._id };
         toast.promise(
-            dispatch(applyToJob({ name, email, jobId: job._id }))
+            dispatch(applyToJob(values))
                 .unwrap(), {
             loading: 'Loading...',
             success: 'Applied',
@@ -62,7 +63,7 @@ function ApplyForm({ job }: { job: jobType }) {
                             <Input
                                 id="name"
                                 name="name"
-                                defaultValue={profile.name}
+                                value={profile.name ?? ''}
                                 onChange={e => setProfile({ ...profile, name: e.target.value })}
                                 placeholder="Hamad Ullah"
                                 className="col-span-3"
@@ -73,7 +74,7 @@ function ApplyForm({ job }: { job: jobType }) {
                             <Input
                                 id="email"
                                 name="email"
-                                defaultValue={profile.email}
+                                value={profile.email ?? ''}
                                 onChange={e => setProfile({ ...profile, email: e.target.value })}
                                 placeholder="hamad@gmail.com"
                                 className="col-span-3"
