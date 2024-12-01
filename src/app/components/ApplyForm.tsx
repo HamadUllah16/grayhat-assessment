@@ -36,10 +36,7 @@ function ApplyForm({ job }: { job: jobType }) {
             dispatch(applyToJob({ name, email, jobId: job._id }))
                 .unwrap(), {
             loading: 'Loading...',
-            success: () => {
-                setApplied(true);
-                return 'Applied'
-            },
+            success: 'Applied',
             error: 'Could not apply to the job.',
         }
         )
@@ -81,13 +78,6 @@ function ApplyForm({ job }: { job: jobType }) {
                                 placeholder="hamad@gmail.com"
                                 className="col-span-3"
                             />
-                        </div>
-
-                        <div className='flex flex-col gap-1'>
-                            {/* {formik.errors.title && <p className="text-red-400 col-span-4 text-xs">{formik.errors.title}</p>} */}
-                            {/* {formik.errors.company && <p className="text-red-400 col-span-4 text-xs">{formik.errors.company}</p>} */}
-                            {/* {formik.errors.jobType && <p className="text-red-400 col-span-4 text-xs">{formik.errors.jobType}</p>} */}
-                            {/* {formik.errors.salaryRange && <p className="text-red-400 col-span-4 text-xs">{formik.errors.salaryRange}</p>} */}
                         </div>
                     </div>
                     <DialogFooter>
