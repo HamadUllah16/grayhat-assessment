@@ -22,18 +22,12 @@ function ApplyForm({ job }: { job: jobType }) {
     const [profile, setProfile] = useState({ name: name ?? '', email: email ?? '' });
     const [applied, setApplied] = useState(false);
 
+    // const { allJobPosts } = useSelector((state: RootState) => state.job)
 
-    const { allJobPosts } = useSelector((state: RootState) => state.job)
-    const relevantJob = allJobPosts.find((eachJob) => eachJob._id === job._id)
+    const isApplied = useSelector((state: RootState) =>
+        state.job.allJobPosts.find(j => j._id === job._id)?.appliedCandidates.some(c => c.email === email)
+    );
 
-    function checkApplied() {
-        if (relevantJob?.appliedCandidates.find((worker) => worker.email === email)) {
-            setApplied(true)
-        }
-        else {
-            setApplied(false)
-        }
-    }
     const dispatch = useDispatch<AppDispatch>();
 
 
@@ -51,15 +45,11 @@ function ApplyForm({ job }: { job: jobType }) {
         }
         )
     }
-
-    useEffect(() => {
-        checkApplied()
-    }, [applied])
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button disabled={applied} size={'default'} variant={'secondary'}>
-                    {applied ? "Applied" : "Apply"}
+                <Button disabled={isApplied} size={'default'} variant={'secondary'}>
+                    {isApplied ? "Applied" : "Apply"}
                 </Button>
             </DialogTrigger>
             <DialogContent>

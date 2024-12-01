@@ -28,7 +28,7 @@ function AddServicePage() {
 
                     {/* rendering all job posts */}
                     <div className='flex flex-col gap-4'>
-                        <h3 className='font-bold text-2xl px-6'>All job posts</h3>
+                        <h3 className='font-bold text-2xl px-6'>My job posts</h3>
                         <AllJobPosts />
                     </div>
                 </>

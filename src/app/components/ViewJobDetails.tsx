@@ -52,7 +52,7 @@ function ViewJobDetails({ job }: { job: jobPost }) {
                             })
                             :
                             <p className='px-6 text-xs'>
-                                No job posts found...
+                                No service worker has applied yet...
                             </p>
                         }
 

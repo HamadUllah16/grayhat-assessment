@@ -13,11 +13,6 @@ interface jobPost {
 }
 
 const initialState = {
-    title: '',
-    company: '',
-    jobType: '',
-    salaryRange: '',
-    appliedCandidates: [],
     allJobPosts: <jobPost[]>[],
 
     message: '',
