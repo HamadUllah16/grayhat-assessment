@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../redux/store'
 import { applyToJob } from '../redux/features/jobSlice'
@@ -20,7 +20,6 @@ interface jobType {
 function ApplyForm({ job }: { job: jobType }) {
     const { name, email } = useSelector((state: RootState) => state.user)
     const [profile, setProfile] = useState({ name: name ?? '', email: email ?? '' });
-    const [applied, setApplied] = useState(false);
 
     // const { allJobPosts } = useSelector((state: RootState) => state.job)
 
